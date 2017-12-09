@@ -23,45 +23,45 @@ At STUDENT COUNSELLING, we provide an online counseling and emotional support pl
 </p>
 
 <p align="center">
-<img src="./StudentCounselling/Content/2.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/2.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/3.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/3.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/4.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/4.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/5.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/5.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/6.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/6.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/7.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/7.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/8.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/8.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/9.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/9.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/10.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/10.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/11.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/11.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/12.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/12.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/13.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/13.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/14.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/14.png"  style="width: 700px;"/>
 </p>
 <p align="center">
-<img src="./StudentCounselling/Content/15.PNG"  style="width: 700px;"/>
+<img src="./StudentCounselling/Content/15.png"  style="width: 700px;"/>
 </p>
 
