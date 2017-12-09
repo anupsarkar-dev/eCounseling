@@ -1,0 +1,340 @@
+﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="StudentCounselling.SiteMaster" %>
+
+<%@ Import Namespace="StudentCounselling" %>
+<%@ Import Namespace="Microsoft.AspNet.Identity" %>
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> Online Student Counselling </title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" id="nav_bar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div>
+
+                        <img src="Content/logo.png" class="navbar-brand" style="margin-top: 0; padding-top: 5px; height: 62px; width: 80px;" />
+                        <a runat="server" class="navbar-brand" href="~/" style="color: aqua">STUDENT COUNSELLING</a>
+                    </div>
+
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/" style="color: white"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                        <li><a runat="server" href="~/query" style="color: white"> <span class="glyphicon glyphicon-edit"></span> Q/A</a></li>
+
+
+                        <%If Session("type") = "admin" Then%>
+                        <li><a runat="server" href="AdminPanel" style="color: white"><span class="glyphicon glyphicon-th"></span> Admin Panel</a></li>
+                                                      <li><a runat="server" href="appointment" style="color: white"><span class="glyphicon glyphicon-time"></span> Appointment</a></li>
+                                   <li><a runat="server" href="workshops" style="color: white"><span class="glyphicon glyphicon-star"></span> Workshops</a></li>
+                        <%End If %>
+                                <%If Session("type") = "normal" Then%>
+                        
+                        <li><a runat="server" href="userPanel" style="color: white"><span class="glyphicon glyphicon-th"></span> User Panel</a></li>
+                                                      <li><a runat="server" href="appointment" style="color: white"><span class="glyphicon glyphicon-time"></span> Appointment</a></li>
+                                   <li><a runat="server" href="workshops" style="color: white"><span class="glyphicon glyphicon-star"></span> Workshops</a></li>
+                        <%End If%>
+
+                                  <li><a runat="server" href="feedback" style="color: white"><span class="glyphicon glyphicon-envelope"></span> Feedback</a></li>
+    
+                          </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                   <li><a runat="server" href="~/Account/Login" style="color: white"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+                                <li><a runat="server" href="~/Account/Register" style="color: white"><span class="glyphicon glyphicon-pencil"></span> Register</a></li>
+                             
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                               <li>  <a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
+                                <li>
+                                  <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content" style="
+    margin-left: 20px;
+    margin-right: 20px;
+">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+           
+          
+              <br />
+                <footer>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 footerleft ">
+                                <div class="logofooter">
+                                    <img src="Content/logo.png" class="navbar-brand" style="height: 100px;" />
+                                </div>
+                                <p>At STUDENT COUNSELLING, we provide an online counseling and emotional support platform designed to foster mental wellness. It anonymously connects you with the right expert consisting of psychologists, psychotherapists, counselors, life coaches, career guides and people with rich and deep life experience, who understand you and guide you through completely confidential individual sessions (through free online chats).</p>
+                                <p><i class="fa fa-map-pin"></i>Lovely Professional University, Punjab</p>
+                                <p><i class="fa fa-phone"></i>Phone (India) : +91 9999 878 398</p>
+                                <p><i class="fa fa-envelope"></i>E-mail : info@stdcounselling.com</p>
+
+                            </div>
+                            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                                <h6 class="heading7">GENERAL LINKS</h6>
+                                <ul class="footer-ul">
+                                    <li><a href="#">Career</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+
+                                    <li><a href="#">Case Studies</a></li>
+                                    <li><a href="#">Frequently Ask Questions</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                                <h6 class="heading7">LATEST POST</h6>
+                                <div class="post">
+                                    <p>
+                                        India is one of the most Depressed countries in the world<span>August 3,2017</span>
+                                    </p>
+                                    <p>
+                                        India is one of the most Depressed countries in the world <span>August 3,2017</span>
+                                    </p>
+                                    <p>
+                                        India is one of the most Depressed countries in the world <span>August 3,2017</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                                <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom: 15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                    <div class="fb-xfbml-parse-ignore">
+                                        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+                                        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Twitter</a></blockquote>
+                                        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Instagram</a></blockquote>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+
+                <div class="copyright">
+                    <div class="container">
+                        <div class="col-md-6">
+                            <p>© 2016 - All Rights with STUDENT COUNSELLING</p>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="bottom_ul">
+                                <li><a href="#">studentcounselling.com</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Faq's</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Site Map</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+    <style>
+        #nav_bar {
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a90329+0,8f0222+44,6d0019+100;Brown+Red+3D */
+            background: #a90329; /* Old browsers */
+            background: -moz-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+            -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+
+        footer {
+            background-color: #0c1a1e;
+            min-height: 350px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .footerleft {
+            margin-top: 50px;
+            padding: 0 36px;
+        }
+
+        .logofooter {
+            margin-bottom: 10px;
+            font-size: 25px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .footerleft p {
+            color: #fff;
+            font-size: 12px !important;
+            font-family: 'Open Sans', sans-serif;
+            margin-bottom: 15px;
+        }
+
+            .footerleft p i {
+                width: 20px;
+                color: #999;
+            }
+
+
+        .paddingtop-bottom {
+            margin-top: 50px;
+        }
+
+        .footer-ul {
+            list-style-type: none;
+            padding-left: 0px;
+            margin-left: 2px;
+        }
+
+            .footer-ul li {
+                line-height: 29px;
+                font-size: 12px;
+            }
+
+                .footer-ul li a {
+                    color: #a0a3a4;
+                    transition: color 0.2s linear 0s, background 0.2s linear 0s;
+                }
+
+            .footer-ul i {
+                margin-right: 10px;
+            }
+
+            .footer-ul li a:hover {
+                transition: color 0.2s linear 0s, background 0.2s linear 0s;
+                color: #ff670f;
+            }
+
+        .social:hover {
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -o-transform: scale(1.1);
+        }
+
+
+
+
+        .icon-ul {
+            list-style-type: none !important;
+            margin: 0px;
+            padding: 0px;
+        }
+
+            .icon-ul li {
+                line-height: 75px;
+                width: 100%;
+                float: left;
+            }
+
+        .icon {
+            float: left;
+            margin-right: 5px;
+        }
+
+
+        .copyright {
+            min-height: 40px;
+            background-color: #000000;
+        }
+
+            .copyright p {
+                text-align: left;
+                color: #FFF;
+                padding: 10px 0;
+                margin-bottom: 0px;
+            }
+
+        .heading7 {
+            font-size: 21px;
+            font-weight: 700;
+            color: #d9d6d6;
+            margin-bottom: 22px;
+        }
+
+        .post p {
+            font-size: 12px;
+            color: #FFF;
+            line-height: 20px;
+        }
+
+            .post p span {
+                display: block;
+                color: #8f8f8f;
+            }
+
+        .bottom_ul {
+            list-style-type: none;
+            float: right;
+            margin-bottom: 0px;
+        }
+
+            .bottom_ul li {
+                float: left;
+                line-height: 40px;
+            }
+
+                .bottom_ul li:after {
+                    content: "/";
+                    color: #FFF;
+                    margin-right: 8px;
+                    margin-left: 8px;
+                }
+
+                .bottom_ul li a {
+                    color: #FFF;
+                    font-size: 12px;
+                }
+    </style>
+</body>
+</html>
